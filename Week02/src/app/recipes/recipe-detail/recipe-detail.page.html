@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>recipe-detail [Karel Kurnia]</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <p *ngFor="let recipe of recipes">
+      <ion-item>
+          <ion-avatar slot="start">
+              <ion-img [src]="recipe.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label>{{ recipe.title }}</ion-label>
+      </ion-item>
+      Ingredients: <br>
+      <span *ngFor="let ingredients1 of recipe.ingredients1">
+        <ion-label>- {{ ingredients1.bahan }}</ion-label><br>
+      </span>
+    </p>
+  </ion-list>
+</ion-content>
