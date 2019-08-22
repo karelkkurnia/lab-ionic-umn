@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	  <title>Budget Planner</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/dist/ionic/ionic.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.7.4/css/ionic.bundle.css" rel="stylesheet">
+    <link href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+    <script src="script.js"></script>
+</head>
+<body>
+  <ion-app>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title class="header">Budget Planner</ion-title>
+      </ion-toolbar>
+    </ion-header>
+        
+    <ion-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title><b>Input Pengeluaran</b></ion-card-title>
+        </ion-card-header>
+      
+        <form onsubmit="processForm(event)">
+          <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+              <ion-label position="floating">Nama Pengeluaran</ion-label>
+              <ion-input id="nampeng" required type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Jumlah Pengeluaran</ion-label>
+              <ion-input type="number" id="harpeng" required type="text"></ion-input>
+            </ion-item>
+          </ion-list>
+        </form>
+
+        <div class="goright">
+          <ion-button id="hapus" fill="outline" color="danger">x Hapus</ion-button>
+          <ion-button id="tambah" color="primary">+ Tambah</ion-button>
+        </div>
+      </ion-card>
+
+      <ion-list id="list">
+        <ion-item id="hasildata" style="padding-top: 1%; margin-bottom: 10% !important">
+          <ion-label>Total Pengeluaran </ion-label>
+          <ion-label id="fixsum">Rp 0,00</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-alert-controller></ion-alert-controller>
+  </ion-app>
+  
+  <script>
+    const controller = document.querySelector('ion-alert-controller');
+    
+    function handleButtonClick() {
+      controller.create({
+        header: 'Terjadi Kesalahan',
+        message: 'Mohon masukkan nama dan jumlah pengeluaran.',
+        buttons: ['Tutup']
+      }).then(alert => {
+        alert.present();
+      });
+    }
+  </script>
+</body>
+</html>
